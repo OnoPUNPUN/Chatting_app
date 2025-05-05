@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'chat_page.dart';
 import 'menu_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -167,7 +168,7 @@ class _LoginPageState extends State<LoginPage> {
                             await Future.delayed(Duration(seconds: 2));
 
                             Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => MenuPage()),
+                              MaterialPageRoute(builder: (context) => ChatPage()),
                             );
                           }
                         },
