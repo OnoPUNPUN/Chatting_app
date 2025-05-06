@@ -2,8 +2,31 @@ import 'package:flutter/material.dart';
 
 import '../navigation_darawer.dart';
 
-class TodoPage extends StatelessWidget {
+class TodoPage extends StatefulWidget {
   const TodoPage({super.key});
+
+  @override
+  State<TodoPage> createState() => _TodoPageState();
+}
+
+class _TodoPageState extends State<TodoPage> {
+  final List<String> _todos = [];
+  TextEditingController taskController = TextEditingController();
+  void _addTask(){
+    if(taskController.text.isNotEmpty){
+      setState(() {
+        _todos.add(taskController.text);
+        taskController.clear();
+      });
+    }
+  }
+
+  void _delteTask(int index){
+    setState(() {
+      _todos.removeAt(index);
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +43,12 @@ class TodoPage extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(Icons.calendar_month),
+          ),
+        ],
       ),
       drawer: const NavigationDarawer(),
       body: Stack(
@@ -69,18 +98,38 @@ class TodoPage extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: ListView(
+                    padding: const EdgeInsets.only(bottom: 100),
                     children: [
                       Container(
                         margin: EdgeInsets.only(top: 50, bottom: 20),
                         child:
                         Text('All ToDos',
                           style: TextStyle(
-                              fontSize: 30,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'Maven Pro',
+                            fontSize: 30,
+                            fontWeight: FontWeight.w500,
+                            fontFamily: 'Maven Pro',
                           ),
                         ),
                       ),
+                      ListView.builder(
+                          itemCount: _todos.length,
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemBuilder: (context, index){
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 8.0),
+                              child: Card(
+                                child: ListTile(
+                                  title: Text(_todos[index]),
+                                  trailing: IconButton(
+                                      onPressed: ()=> _delteTask(index),
+                                      icon: Icon(Icons.delete, color: Colors.red,)
+                                  ),
+                                ),
+                              ),
+                            );
+                          }
+                      )
                     ],
                   ),
                 ),
@@ -106,9 +155,10 @@ class TodoPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: TextField(
+                      controller: taskController,
                       decoration: InputDecoration(
-                        hintText: 'Add new Todo Items',
-                        border: InputBorder.none
+                          hintText: 'Add new Todo Items',
+                          border: InputBorder.none
                       ),
                     ),
                   ),
@@ -119,7 +169,9 @@ class TodoPage extends StatelessWidget {
                     right: 20,
                   ),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      _addTask();
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
                       minimumSize: const Size(60, 60),
