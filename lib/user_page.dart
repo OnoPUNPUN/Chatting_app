@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 
-class UserPage extends StatelessWidget {
+class UserPage extends StatefulWidget {
   const UserPage({super.key});
 
+  @override
+  State<UserPage> createState() => _UserPageState();
+}
+
+class _UserPageState extends State<UserPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
         title: const Text(
           'User Page',
           style: TextStyle(
@@ -17,6 +23,9 @@ class UserPage extends StatelessWidget {
         ),
         centerTitle: true,
         backgroundColor: Colors.blueAccent,
+        actions: [
+          IconButton(onPressed: (){}, icon: Icon(Icons.edit)),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),

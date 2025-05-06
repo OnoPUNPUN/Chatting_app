@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:simple_login_page/pages/todo_page.dart';
 import 'package:simple_login_page/user_page.dart';
 
+import 'chat_page.dart';
 import 'login_page.dart';
 
 class NavigationDarawer extends StatelessWidget {
@@ -69,7 +71,9 @@ class NavigationDarawer extends StatelessWidget {
             leading: const Icon(Icons.chat, color: Colors.white,),
             title: const Text('Conversation', style: TextStyle(color: Colors.white),),
             onTap: (){
-              Navigator.pop(context);
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => ChatPage())
+              );
             },
           ),
 
@@ -91,6 +95,16 @@ class NavigationDarawer extends StatelessWidget {
             onTap: (){},
           ),
 
+          ListTile(
+            leading: const Icon(Icons.calendar_month, color: Colors.white,),
+            title: const Text('TODO', style: TextStyle(color: Colors.white),),
+            onTap: (){
+              Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => TodoPage())
+              );
+            },
+          ),
+
           const Divider(color: Colors.white60, thickness: 2.0,),
 
           ListTile(
@@ -107,7 +121,9 @@ class NavigationDarawer extends StatelessWidget {
             leading: const Icon(Icons.settings, color: Colors.white,),
             title: const Text('Settings', style: TextStyle(color: Colors.white),),
             onTap: (){},
-          )
+          ),
+
+
         ],
       ),
     );
