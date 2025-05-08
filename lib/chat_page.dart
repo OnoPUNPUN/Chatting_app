@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:simple_login_page/pages/add_friend_page.dart';
 import 'package:simple_login_page/widgets/chat_bar.dart';
 import 'models/users.dart';
-
 import 'navigation_darawer.dart';
 
 class ChatPage extends StatelessWidget {
@@ -88,6 +88,27 @@ class ChatPage extends StatelessWidget {
                 separatorBuilder: (context, index) => const SizedBox(height: 10.0),
               ),
             ),
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Container(
+                margin: EdgeInsets.all(20),
+                child: FloatingActionButton(onPressed: (){
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => AddFriendPage(),
+                  )
+                  );
+                },
+                  child: Text('+',
+                    style: TextStyle(
+                      fontSize: 35,
+                    ),
+                  ),
+                ),
+              )
+            ],
           ),
         ],
       ),
