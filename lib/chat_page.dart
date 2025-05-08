@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:simple_login_page/widgets/chat_bar.dart';
+import 'models/users.dart';
 
 import 'navigation_darawer.dart';
 
@@ -73,86 +75,17 @@ class ChatPage extends StatelessWidget {
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-              child: ListView(
-                children: const [
-                  ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: AssetImage('pics/punpun.jpg'),
-                      radius: 30,
-                    ),
-                    title: Text('Tonmoy', style: TextStyle(fontSize: 20),),
-                    subtitle: Text('This is awesome', style: TextStyle(fontSize: 16, color: Colors.black45),
-                    ),
-                  ),
-
-                  SizedBox(
-                    height: 10.0,
-                  ),
-
-                  ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: AssetImage('pics/hhh.jpg'),
-                      radius: 30,
-                    ),
-                    title: Text('Big Boi Adolf', style: TextStyle(fontSize: 20),),
-                    subtitle: Text("Let's Finish Them", style: TextStyle(fontSize: 16, color: Colors.black45),
-                    ),
-                  ),
-
-                  SizedBox(
-                    height: 10.0,
-                  ),
-
-                  ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: AssetImage('pics/R.jpg'),
-                      radius: 30,
-                    ),
-                    title: Text('Nafiz', style: TextStyle(fontSize: 20),),
-                    subtitle: Text('Amar CG 5.00', style: TextStyle(fontSize: 16, color: Colors.black45),
-                    ),
-                  ),
-
-                  SizedBox(
-                    height: 10.0,
-                  ),
-
-                  ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: AssetImage('pics/mimber.jpg'),
-                      radius: 30,
-                    ),
-                    title: Text('C. Mike Rack', style: TextStyle(fontSize: 20),),
-                    subtitle: Text('Man we should study math', style: TextStyle(fontSize: 16, color: Colors.black45),
-                    ),
-                  ),
-
-                  SizedBox(
-                    height: 10.0,
-                  ),
-
-                  ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: AssetImage('pics/Na.jpg'),
-                      radius: 30,
-                    ),
-                    title: Text('Md. Robiul Islam', style: TextStyle(fontSize: 20),),
-                    subtitle: Text('I will be the Next OSA', style: TextStyle(fontSize: 16, color: Colors.black45),),
-                  ),
-
-                  SizedBox(
-                    height: 10.0,
-                  ),
-
-                  ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: AssetImage('pics/D.jpg'),
-                      radius: 30,
-                    ),
-                    title: Text('Danny', style: TextStyle(fontSize: 20),),
-                    subtitle: Text('Danny sent an attachment', style: TextStyle(fontSize: 16, color: Colors.black45),),
-                  ),
-                ],
+              child: ListView.separated(
+                itemCount: users.length,
+                itemBuilder: (context, index) {
+                  final user = users[index];
+                  return ChatBar(
+                    friendName: user.friendName,
+                    chat: user.chat,
+                    imageLocation: user.imageLocation,
+                  );
+                },
+                separatorBuilder: (context, index) => const SizedBox(height: 10.0),
               ),
             ),
           ),
