@@ -1,6 +1,6 @@
 class Users{
   final String friendName;
-  final String chat;
+  final String? chat;
   final String? imageLocation;
 
   Users(this.friendName, this.chat, this.imageLocation);

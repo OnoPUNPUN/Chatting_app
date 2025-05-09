@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:simple_login_page/login_page.dart';
+import 'package:simple_login_page/pages/add_friend_page.dart';
 import 'package:simple_login_page/pages/todo_page.dart';
 import 'package:simple_login_page/user_page.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Rack Chats',
-      home: TodoPage(),
+      home: ChatPage(),
     );
   }
 }

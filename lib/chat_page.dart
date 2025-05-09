@@ -4,14 +4,19 @@ import 'package:simple_login_page/widgets/chat_bar.dart';
 import 'models/users.dart';
 import 'navigation_darawer.dart';
 
-class ChatPage extends StatelessWidget {
+class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
 
+  @override
+  State<ChatPage> createState() => _ChatPageState();
+}
+
+class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         title: const Text(
           'Conversation',
           style: TextStyle(
@@ -74,7 +79,8 @@ class ChatPage extends StatelessWidget {
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              padding:
+              const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
               child: ListView.separated(
                 itemCount: users.length,
                 itemBuilder: (context, index) {
@@ -94,14 +100,21 @@ class ChatPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Container(
-                margin: EdgeInsets.all(20),
-                child: FloatingActionButton(onPressed: (){
-                  Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => AddFriendPage(),
-                  )
-                  );
-                },
-                  child: Text('+',
+                margin: const EdgeInsets.all(20),
+                child: FloatingActionButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AddFriendPage(),
+                      ),
+                    ).then((_){
+                      setState(() {
+                      });
+                    });
+                  },
+                  child: const Text(
+                    '+',
                     style: TextStyle(
                       fontSize: 35,
                     ),
