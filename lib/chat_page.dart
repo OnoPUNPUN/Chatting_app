@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:simple_login_page/pages/add_friend_page.dart';
+import 'package:simple_login_page/pages/chatting_page.dart';
 import 'package:simple_login_page/widgets/chat_bar.dart';
 import 'models/users.dart';
 import 'navigation_darawer.dart';
@@ -85,10 +86,19 @@ class _ChatPageState extends State<ChatPage> {
                 itemCount: users.length,
                 itemBuilder: (context, index) {
                   final user = users[index];
-                  return ChatBar(
-                    friendName: user.friendName,
-                    chat: user.chat,
-                    imageLocation: user.imageLocation,
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(
+                              builder: (context) => ChattingPage(users: user,)
+                        )
+                      );
+                    },
+                    child: ChatBar(
+                      friendName: user.friendName,
+                      chat: user.chat,
+                      imageLocation: user.imageLocation,
+                    ),
                   );
                 },
                 separatorBuilder: (context, index) => const SizedBox(height: 10.0),
