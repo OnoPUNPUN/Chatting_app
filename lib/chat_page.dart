@@ -96,7 +96,7 @@ class _ChatPageState extends State<ChatPage> {
                     },
                     child: ChatBar(
                       friendName: user.friendName,
-                      chat: user.chat,
+                      chat: user.chats?.isNotEmpty == true ? user.chats!.last : '',
                       imageLocation: user.imageLocation,
                     ),
                   );

@@ -31,8 +31,8 @@ class ChatBar extends StatelessWidget {
         style: const TextStyle(fontSize: 20),
       ),
       subtitle: Text(
-          (chat!.isEmpty) ? defultChat : chat!,
-          style: const TextStyle(fontSize: 16, color: Colors.black45),
+        (chat!.isEmpty) ? defultChat : chat!,
+        style: const TextStyle(fontSize: 16, color: Colors.black45),
       ),
     );
   }

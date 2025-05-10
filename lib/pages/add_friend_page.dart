@@ -111,7 +111,7 @@ class _AddFriendPageState extends State<AddFriendPage> {
                   if (_formKey.currentState!.validate()) {
                     String name = nameController.text;
                     String email = emailController.text;
-                    users.add(Users(name, '', null));
+                    users.add(Users(name, [''], null));
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
                         content: Text('Friend added successfully!'),
