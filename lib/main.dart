@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Rack Chats',
-      home: ChatPage(),
+      home: LoginPage(),
     );
   }
 }
